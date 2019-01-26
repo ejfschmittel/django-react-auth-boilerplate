@@ -10,6 +10,7 @@ module.exports = merge(common, {
   devServer: {
     contentBase: distPath,
     port: 3000,
-    historyApiFallback: true
+    historyApiFallback: true,
+    disableHostCheck: true, //remove WDS connection error
   },
 });
