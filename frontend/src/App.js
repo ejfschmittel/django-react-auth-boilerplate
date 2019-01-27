@@ -11,6 +11,9 @@ import 'style/main.scss'
 //const ExamplePage = lazy(() => import('pages/ExamplePage'))
 
 
+//local storage vs session storage
+
+
 
 
 const RegisterPage = lazy(() => import('pages/users/RegisterPage'))
@@ -20,12 +23,11 @@ const RegisterPageTest = lazy(() => import('pages/users/RegisterPageTest'))
 const jwt_token = localStorage.getItem("jwt_token")
 
 if(jwt_token){
-    //try login / refresh
     
 }
 
 const Welcome = () =>  (
-    <h1>Welcome {jwt_token}</h1>
+    <h1>Welcome</h1>
 ) 
 
 export default () => (

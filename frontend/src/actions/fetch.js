@@ -40,12 +40,13 @@ export const cfetch = (url, options, data=undefined) => {
         }
     }
 
-
     console.log(finalOptions)
 
     return fetch(url, finalOptions)
         .then(checkResponseStatus)
         .then(parseJSON)
+
+         
 }
 
 
@@ -55,28 +56,6 @@ export const post = (url, options, data=undefined) => cfetch(url, {...options, m
 export const update = (url, options, data=undefined) => cfetch(url, {...options, method:"UPDATE"}, data)
 export const put = (url, options, data=undefined) => cfetch(url, {...options, method:"PUT"}, data)
 export const patch = (url, options, data=undefined) => cfetch(url, {...options, method:"PATCH"}, data)
-//export const delete = (url, options, data=undefined) => cfetch(url, {...options, method:"DELETE"}, data)
+export const del = (url, options, data=undefined) => cfetch(url, {...options, method:"DELETE"}, data)
 
 
-const getAuthHeaders = () => {
-    
-}
-
-
-/*
-export function submitForm(data) {
-    return dispatch => post('/myform', data).then(
-      response => dispatch({
-        type: 'SUBMIT_FORM_SUCCESS',
-        payload: response
-      }),
-      error => dispatch({
-        type: 'SUBMIT_FORM_FAILURE',
-        error: error,
-        suppressGlobalErrorNotification: (
-          error.response &&
-          error.response.status === 400
-        )
-      })
-    )
-}*/
