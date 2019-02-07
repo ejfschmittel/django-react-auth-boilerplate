@@ -31,9 +31,12 @@ export const cfetch = (url, options, data=undefined) => {
         ...options,
     }
 
+    console.log(data)
+
     if(finalOptions.method === "GET" && data){
         throw new Error("can't send data via GET request!")
     }else if(data){
+
         finalOptions = {
             ...finalOptions,
             body: JSON.stringify(data)  

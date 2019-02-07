@@ -18,17 +18,19 @@ class LoginPage extends Component {
     }
   }
 
-  componentWillReceiveProps(newProps){
-    if(newProps.errors != this.props.errors){
-        this.setState({errors: newProps.errors })
+  componentDidUpdate(prevProps){
+    if(prevProps.errors !== this.props.errors){
+      this.setState({errors: this.props.errors})
     }
-  } 
+  }
 
   onSubmit = (evt) => {
-    this.props.dispatch(loginUser(this.state.values))
+    const referrer = (((this.props.location || {}).state || {}).referrer || "/");
+    this.props.loginUser(this.state.values, referrer)
   }
 
   render() {
+
     return (
       <div className="center-box">
         <h1 className="headline__mega headline__center">Login Page</h1>
@@ -38,7 +40,7 @@ class LoginPage extends Component {
           <Input name="username_or_email" placeholder="username or email" className="input__underline input__medium" />
           <Input type="password" name="password" placeholder="password" className="input__underline input__medium" />
           <Error name="non_field_errors" className="form-error"/>
-          <button className="button button__medium">Login</button>
+          <button className="button button__medium">Login {this.props.loading ? "Loading...": null}</button>
         </Form>
         
       </div>
@@ -47,9 +49,9 @@ class LoginPage extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  user: state.auth.user,
-  token: state.auth.token,
-  errors: state.form.errors,
+  redirectUrl: state.auth.loginReturnUrl,
+  errors: state.auth.errors,
+  loading: state.auth.loading
 })
 
-export default connect(mapStateToProps, null)(LoginPage)
+export default connect(mapStateToProps, {loginUser})(LoginPage)

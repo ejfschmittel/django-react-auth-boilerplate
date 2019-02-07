@@ -1,22 +1,25 @@
-import { REGISTER_USER_SUCCESS, AUTH_ERROR, LOGOUT_USER, LOGIN_USER_SUCCESS } from "actions/authTypes"
+import * as types from "actions/authTypes"
 
 const INITIAL_STATE = {
     token: null,
     user: null,
+    loading: false,
+    errors: null,
+    isAuthenticated: false,
 }
 
 const authReducer = (state = INITIAL_STATE, action) => {
-
-   
-
     switch(action.type){
-        case REGISTER_USER_SUCCESS :
-            return {token: null, user: action.payload }
-        case LOGIN_USER_SUCCESS :
-            const {token, user} = action.payload
-            return {token, user}
-        case LOGOUT_USER:
-            return INITIAL_STATE
+        case types.SIGN_UP_SUCCESS :
+            return {...state, ...action.payload }
+        case types.LOGIN_SUCCESS : 
+            return {...state, ...action.payload}
+        case types.LOGOUT:
+            return {...state, ...action.payload}
+        case types.SET_AUTH_ERROR:
+            return {...state, ...action.payload}
+        case types.START_AUTH_PROCESS:
+            return {...state, loading: action.payload}
         default:
             return state
     }

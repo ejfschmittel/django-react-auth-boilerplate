@@ -6,17 +6,10 @@ import React, { Component } from 'react'
 //https://stackoverflow.com/questions/35417507/how-to-make-a-global-error-handler-in-redux-and-override-it-when-needed
 
 import {connect} from "react-redux"
-import {registerUser} from "actions/authActions"
+import {signUpUser} from "actions/authActions"
 import {Link} from "react-router-dom"
 import {Form, Input, Error} from "components/formlib"
 
-
-const initialValues = {
-  email: "",
-  username: "",
-  password: "",
-  password_again: "",
-}
 
 class RegisterPage extends Component {
 
@@ -34,17 +27,17 @@ class RegisterPage extends Component {
     }
   }
 
-  componentWillReceiveProps(newProps){
-    if(newProps.errors != this.props.errors){
-        this.setState({errors: newProps.errors })
+  componentDidUpdate(prevProps){
+    if(prevProps.errors !== this.props.errors){
+      this.setState({errors: this.props.errors})
     }
-  } 
+  }
 
   onSubmit = (evt) => {
       const {values} = this.state
       if(values.password !== "" && values.password === values.password_again ){
         const {password_again, ...sendValues} = values
-        this.props.dispatch(registerUser(sendValues))
+        this.props.signUpUser(sendValues)
       }else{
         const {errors} = this.state
         errors['password'] = ["password do not match"]
@@ -79,7 +72,8 @@ class RegisterPage extends Component {
 
 const mapStateToProps = state => ({
   user: state.auth.user,
-  errors: state.form.errors
+  errors: state.auth.errors,
+  loading: state.auth.loading,
 })
 
-export default connect(mapStateToProps, null )(RegisterPage)
+export default connect(mapStateToProps, {signUpUser})(RegisterPage)

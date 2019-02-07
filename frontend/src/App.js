@@ -1,49 +1,60 @@
 import React, {Suspense, lazy} from 'react'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Router, Route, Switch } from 'react-router-dom';
+//import { Router, Route, Switch, browserHistory } from 'react-router'
+//import {ConnectedRouter} from "react-router-redux"
 import {Provider} from "react-redux"
-import store from "./configureStore"
+import store from "reducers/configureStore"
+
+import AuthReqRoute from "routing/AuthReqRoute"
+
+import history from "reducers/history"
 
 import Header from "components/Header.js"
 
 import 'style/main.scss'
 
-//TODO: Default loading component
-//const ExamplePage = lazy(() => import('pages/ExamplePage'))
 
+import {checkAuth} from "actions/authActions"
 
-//local storage vs session storage
-
-
+ console.log(store.dispatch(checkAuth()))
 
 
 const RegisterPage = lazy(() => import('pages/users/RegisterPage'))
 const LoginPage = lazy(() => import('pages/users/LoginPage'))
-const RegisterPageTest = lazy(() => import('pages/users/RegisterPageTest'))
+//const RegisterPageTest = lazy(() => import('pages/users/RegisterPageTest'))
 
-const jwt_token = localStorage.getItem("jwt_token")
+console.log(history)
 
-if(jwt_token){
-    
-}
 
 const Welcome = () =>  (
     <h1>Welcome</h1>
 ) 
 
-export default () => (
-    <Provider store={store}>
-        <Router>
-            <Suspense fallback={<div>Loading...</div>}>
-                <Header />
-                <Switch>
-                    <Route path="/" component={Welcome} exact={true}/>
-                    <Route path="/users/test/" component={RegisterPageTest} />
-                    <Route path="/users/login/" component={LoginPage}/>
-                    <Route path="/users/register/" component={RegisterPage}/>
-
-                   
-                </Switch>
-            </Suspense>
-        </Router>
-    </Provider>
+const Test = () => (
+    <h1>Auth Route</h1>
 )
+
+export default () => (
+    
+        <Provider store={store}>
+             <Router history={history}>
+                <Suspense fallback={<div>Loading...</div>}>
+                    <Header />
+                    <Switch>
+                        <Route path="/" component={Welcome} exact={true}/>
+                        <AuthReqRoute path="/test/" component={Test} />
+                        <Route path="/users/login/" component={LoginPage}/>
+                        <Route path="/users/register/" component={RegisterPage}/>
+                        
+
+                    
+                    </Switch>
+                </Suspense>
+            </Router>
+        </Provider>
+)
+
+/*
+    
+    
+*/
