@@ -30,7 +30,8 @@ class LoginPage extends Component {
   }
 
   render() {
-
+    const referrer = (((this.props.location || {}).state || {}).referrer || "/");
+    console.log(referrer)
     return (
       <div className="center-box">
         <h1 className="headline__mega headline__center">Login Page</h1>

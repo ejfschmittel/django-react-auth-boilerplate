@@ -1,7 +1,7 @@
 
-export const SIGN_UP_SUCCESS = "SIGN UP SUCCESS"
 export const LOGIN_SUCCESS = "LOGIN SUCCESS"
 export const LOGOUT = "LOGOUT"
 export const SET_AUTH_ERROR = "AUTH ERROR"
+export const SIGN_UP_SUCCESS = "SIGN UP SUCCESS"
 export const START_AUTH_PROCESS = "START AUTH PROCESS"
 

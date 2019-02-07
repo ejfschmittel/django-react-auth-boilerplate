@@ -1,2 +1,0 @@
-export const FORM_MESSAGE = "FORM MESSAGE"
-export const FORM_ERRORS = "FORM ERRORS"

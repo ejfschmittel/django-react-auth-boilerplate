@@ -1,4 +1,4 @@
-import * as types from "actions/authTypes"
+import * as types from "actions/types/authTypes"
 
 const INITIAL_STATE = {
     token: null,
