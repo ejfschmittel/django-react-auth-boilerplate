@@ -1,6 +1,6 @@
-# Django & React Boilerplate
+# Django & React Auth Boilerplate
 
-A Boilderplate for Django, django rest framework, React, Scss Webapplications bundles using Webpack.
+A Boilderplate for Django, django rest framework, React, Scss Webapplications, bundled using Webpack. 
 
 ### Backend Workflow
 
