@@ -3,7 +3,7 @@ import {Link} from "react-router-dom"
 import {connect} from "react-redux"
 import {logout} from "actions/authActions"
 
-import "style/components/header.scss"
+import "style/layout/header.scss"
 
 const Header = ({logout, isAuthenticated}) => (
   <header className="header-primary">

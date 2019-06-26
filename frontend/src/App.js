@@ -18,6 +18,7 @@ store.dispatch(checkAuth())
 
 const RegisterPage = lazy(() => import('pages/users/RegisterPage'))
 const LoginPage = lazy(() => import('pages/users/LoginPage'))
+const TestPage = lazy(() => import('pages/StyleTest'))
 
 
 const Welcome = () =>  (
@@ -35,6 +36,7 @@ export default () => (
                 <Header />
                 <Switch>
                     <Route path="/" component={Welcome} exact={true}/>
+                    <Route path="/mytest/" component={TestPage} />
                     <AuthReqRoute path="/test/" component={AuthRoute} />
                     <Route path="/users/login/" component={LoginPage}/>
                     <Route path="/users/register/" component={RegisterPage}/> 

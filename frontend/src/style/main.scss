@@ -1,4 +1,13 @@
-@import 'reset.scss';
-@import 'base.scss';
-//@import './components/header.scss';
-@import './general/forms.scss';
+
+/* ABSTRACTS */
+@import "abstracts/variables";
+@import "abstracts/functions";
+@import "abstracts/mixins";
+
+/* BASE */
+@import "base/animations";
+@import "base/base";
+@import "base/typography";
+@import "base/utils";
+
+/* COMMON COMPONENTS */

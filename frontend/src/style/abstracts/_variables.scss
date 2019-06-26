@@ -1,0 +1,23 @@
+
+
+$default-text-color: #333;
+
+/* MAIN BREAKPOINT VARS */
+
+/*
+    0 - 600 Phone
+    600-900 tablet portrait
+    900 - 1200 tablet landscape
+    [1200-1800] normal styles
+    1800px + Big desktop
+
+    convert pixel zu em
+    1em = 16px
+
+    used in respond() mixin
+*/
+
+$breakpoint-phone: 37.5em;  // 600px
+$breakpoint-tab-port: 56.26em; // 900 px
+$breakpoint-tab-land: 75em; // 1200 px 
+$breakpoint-big-desktop: 112.5em; // 18000 px
