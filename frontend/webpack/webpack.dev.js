@@ -12,6 +12,7 @@ module.exports = merge(common, {
   },
   devServer: {
     open: true,
+    publicPath: "/",
     contentBase: distPath,
     port: 3000,
     historyApiFallback: true,
