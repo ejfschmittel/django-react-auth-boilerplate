@@ -8,35 +8,24 @@
 const path = require("path")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 
-const distPath = path.join(__dirname, '../dist/')
-const entryPath = './index.js'
+const distPath = path.join(__dirname, '../wwwroot/')
+const entryPath = path.resolve(__dirname, '../index.js')
 
 module.exports = {
   entry: entryPath,
   output: {
     path: distPath,
-    filename: 'bundle.js',
-    publicPath: '/'
+    filename: 'js/[name].js',
+    publicPath: './'
   },
+
   resolve: {
     modules: ['node_modules', 'src'],
     extensions: ['.js', '.jsx']
   },
   module: {
-    rules: [{
-      test: /\.(js|jsx)$/,
-      exclude: /node_modules/,
-      use: {
-        loader: "babel-loader"
-      }
-    },{
-      test: /\.scss$/,
-      use: [
-        "style-loader",
-        "css-loader",
-        "sass-loader"
-      ]
-    },{
+    rules: [
+    {
         test: /\.html$/,
         use: [
           {
@@ -44,14 +33,23 @@ module.exports = {
             options: {minimize: true}
           }
         ]
-      }
+    },{
+        test: /\.(ico|jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2)(\?.*)?$/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: '[path][name].[ext]'
+          }
+        }
+      },
+
     ]
   },
   //devtool: "cheap-module-eval-source-map",
   plugins: [
     new HtmlWebpackPlugin({
-      template: "./index.html",
-      filename: "./index.html"
+      template: path.resolve(__dirname, '../index.html'),
+      filename: "index.html"
     })
   ],
 
