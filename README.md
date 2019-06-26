@@ -5,7 +5,7 @@ A Boilderplate for Django, django rest framework, React, Scss Webapplications bu
 ### Backend Workflow
 
 ```
-virtual env 
+virtualenv env 
 env/Scripts/activate
 pip install -r requirements.txt
 python manage.py runserver
